@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Race Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+
+        label, select {
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Race Details</h1>
+    <form id="raceForm">
+        <!-- Year Selection -->
+        <label for="year">Select Year:</label>
+        <select name="year" id="year">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+        </select>
+
+        <!-- Grand Prix Selection -->
+        <label for="grand_prix">Select Grand Prix:</label>
+        <select name="grand_prix" id="grand_prix">
+            <option value="British Grand Prix">British Grand Prix</option>
+            <option value="Monaco Grand Prix">Monaco Grand Prix</option>
+            <option value="Belgian Grand Prix">Belgian Grand Prix</option>
+        </select>
+
+        <!-- Driver Selection 1 -->
+        <label for="driver1">Select Driver 1:</label>
+        <select name="driver1" id="driver1">
+            <option value="HAM">HAM</option>
+            <option value="VER">VER</option>
+            <option value="NOR">NOR</option>
+            <option value="LEC">LEC</option>
+            <option value="SAI">SAI</option>
+            <option value="RUS">RUS</option>
+            <option value="ALO">ALO</option>
+            <option value="STR">STR</option>
+            <option value="PIA">PIA</option>
+            <option value="ALB">ALB</option>
+            <option value="GAS">GAS</option>
+            <option value="OCO">OCO</option>
+        </select>
+
+        <!-- Driver Selection 2 -->
+        <label for="driver2">Select Driver 2:</label>
+        <select name="driver2" id="driver2">
+            <option value="HAM">HAM</option>
+            <option value="VER">VER</option>
+            <option value="NOR">NOR</option>
+            <option value="LEC">LEC</option>
+            <option value="SAI">SAI</option>
+            <option value="RUS">RUS</option>
+            <option value="ALO">ALO</option>
+            <option value="STR">STR</option>
+            <option value="PIA">PIA</option>
+            <option value="ALB">ALB</option>
+            <option value="GAS">GAS</option>
+            <option value="OCO">OCO</option>
+        </select>
+
+        <!-- Driver Selection 3 -->
+        <label for="driver3">Select Driver 3:</label>
+        <select name="driver3" id="driver3">
+            <option value="HAM">HAM</option>
+            <option value="VER">VER</option>
+            <option value="NOR">NOR</option>
+            <option value="LEC">LEC</option>
+            <option value="SAI">SAI</option>
+            <option value="RUS">RUS</option>
+            <option value="ALO">ALO</option>
+            <option value="STR">STR</option>
+            <option value="PIA">PIA</option>
+            <option value="ALB">ALB</option>
+            <option value="GAS">GAS</option>
+            <option value="OCO">OCO</option>
+        </select>
+
+        <!-- Submit Button -->
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            // Get form values
+            const year = document.getElementById('year').value;
+            const grandPrix = document.getElementById('grand_prix').value;
+            const driver1 = document.getElementById('driver1').value;
+            const driver2 = document.getElementById('driver2').value;
+            const driver3 = document.getElementById('driver3').value;
+
+            // Create the JSON object
+            const raceData = {
+                year: parseInt(year),
+                grand_prix: grandPrix,
+                drivers: [driver1, driver2, driver3]
+            };
+
+            // Convert the JSON object to a string
+            const raceDataString = JSON.stringify(raceData);
+
+            // Encode the JSON string in Base64
+            const encodedData = btoa(raceDataString);
+
+            // Redirect to /generate with the Base64-encoded data as query parameter
+            window.location.href = `/generate?data=${encodedData}`;
+        }
+    </script>
+</body>
+</html>
