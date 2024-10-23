@@ -107,7 +107,7 @@ def generate():
                         x=[action['DistanceDelta']],
                         y=[dr], orientation='h', name=action['CurrentAction'],
                         marker_color=telemetry_colors[action['CurrentAction']],
-                        hoverinfo='name',
+                        hoverinfo='name', width=1,
                         base=previous_action_end,
                         showlegend=(i == 0)  # Show legend only for the first driver
                     ),
@@ -144,8 +144,15 @@ if __name__ == "__main__":
     ff1.Cache.enable_cache('cache/')
 
     # Load the selected session data
-    years = list(range(2020, 2024))
-    grand_prixs = ['British Grand Prix', 'Monaco Grand Prix', 'Belgian Grand Prix']
+    years = list(range(2020, 2025))
+    grand_prixs = ['Austrian Grand Prix', 'Styrian Grand Prix', 'Hungarian Grand Prix', '70th Anniversary Grand Prix', 
+                   'Spanish Grand Prix', 'British Grand Prix', 'Monaco Grand Prix', 'Belgian Grand Prix', 
+                   'Italian Grand Prix', '	Tuscan Grand Prix', 'Russian Grand Prix', 'Eifel Grand Prix', 
+                   'Portuguese Grand Prix', 'Emilia Romagna Grand Prix', 'Turkish Grand Prix', 'Bahrain Grand Prix', 
+                   'Sakhir Grand Prix', 'Abu Dhabi Grand Prix', 'Australian Grand Prix', 'Vietnamese Grand Prix', 
+                   'Chinese Grand Prix', 'Dutch Grand Prix', 'Azerbaijan Grand Prix', 'Canadian Grand Prix', 
+                   'French Grand Prix', 'Singapore Grand Prix', 'Japanese Grand Prix', 'United States Grand Prix', 
+                   'Mexico City Grand Prix', 'Brazilian Grand Prix']
 
     for year in years:
         for grand_prix in grand_prixs:
